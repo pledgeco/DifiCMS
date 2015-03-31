@@ -168,6 +168,24 @@ a:hover {
 
 </style>
 
+<?php
+$listQ = mysql_query("SELECT title, id FROM cms_news ORDER BY id DESC LIMIT 5");
+                $output = "";
+                while($list = mysql_fetch_assoc($listQ)) {
+                    if($list['id'] == $_GET['id'])
+                    $output .= '
+                       <strong>'.$list['title'].'</strong> &raquo;<br />
+                   ';
+                    else
+                    $output .= '
+                       <a href="http://prosjektdatabasen.com/index.php?url=news&id='.$list['id'].'">'.$list['title'].'</a> &raquo;<br />
+                   ';
+                }
+                $template->setParams('audiList', $output);
+           
+                unset($result);
+                unset($news1);
+                unset($news); ?>
 
 <div class="wrapper">
 	<a id="logo" href="http://prosjektdatabasen.com"></a>
@@ -292,12 +310,7 @@ for å registrere et prosjekt.
 			<div class="content">
     		<img src="images/circle-new.png"/ alt="" >
     		<h2 style="color:#2e7297; margin-top:9px; font-size:16px;">Nyheter</h2>
-    		Lorem Ipsum er rett og slett dummytekst fra og for trykkeindustrien. Lorem Ipsum har vært bransjens 
-    		standard for dummytekst helt siden 1500-tallet, da en ukjent boktrykker stokket en mengde bokstaver for å lage 
-    		et prøveeksemplar av en bok. Lorem Ipsum har tålt tidens tann usedvanlig godt, og har i tillegg til å bestå gjennom
-    		 fem århundrer også tålt spranget over til elektronisk typografi uten vesentlige endringer. Lorem Ipsum ble gjort allment 
-    		 kjent i 1960-årene ved lanseringen av Letraset-ark med avsnitt fra Lorem Ipsum, og senere med sideombrekkingsprogrammet Aldus 
-    		 PageMaker som tok i bruk nettopp Lorem Ipsum for dummytekst.
+    		{audiList}
 
     		 
 			</div>​
