@@ -46,13 +46,13 @@ a:hover {
 
 <div id="menu">
 	<ul id="nav"> <!--  meny  -->
-                <li><a href="/index"> Hjem</a></li>
-                <li><a href="/register"> Registrer et prosjekt</a></li>
-
-		<li><a href="/login"> Logg inn</a></li>
+                <li><a href="/me"> Hjem</a></li>
+                <li><a href="/account"> Prosjektinnstillinger</a></li>
+          
+		<li><a href="/logout"> Logg ut</a></li>
 	</ul>          
 </div>
 
 		<br /><br /><br /><br /><br /><br /><br />
-	<hr / style="margin-top:-2px;">
+	<hr / style="margin-top:-9px;">
 <br />
