@@ -169,117 +169,185 @@ body {
     text-align: center;
 }
 
-.button {
-  width:55px;
-  color:#FFF;
-  height:15px;
+button[type=submit] {
+    width:110px;
+    color:#FFF;
+    height:40px;
+    float:left;
+    background-color:#2e7297;
+    padding:10px;
+    border-color:#2e7297;
+    border-radius: 5px;
+    border: 1px solid;
+    text-align: center;
+    margin-bottom:80px;
+
+}
+
+button[type=submit]:hover {
+    width:110px;
+    color:#FFF;
+    height:40px;
+    float:left;
+    background-color:#4d97bf;
+    padding:10px;
+    border-color:#4d97bf;
+    border-radius: 5px;
+    border: 1px solid;
+    text-align: center;
+    margin-bottom:80px;
+
+}
+
+
+strong {
+  font-weight: bold; 
+}
+
+em {
+  font-style: italic; 
+}
+
+table {
+  background: #f5f5f5;
+  border-collapse: separate;
+  box-shadow: inset 0 1px 0 #fff;
+  font-size: 12px;
+  margin: 30px auto;
+  text-align: left;
   float:left;
-  background-color:#2e7297;
+    border-color:#f5f5f5;
+    border-radius: 5px;
+    border: 1px solid;
+    margin-top:-2px;
+    width:100%;
+    
+} 
+
+th {
+  background: url(http://prosjektdatabasen.com/images/noise-diagonal.png), linear-gradient(#4d97bf, #2e7297);
+  border-left: 1px solid #f5f5f5;
+  border-right: 1px solid #f5f5f5;
+  border-top: 1px solid #f5f5f5;
+  border-bottom: 1px solid #f5f5f5;
+  box-shadow: inset 0 1px 0 #f5f5f5;
+  color: #fff;
+  font-weight: bold;
+  padding: 10px 15px;
+  position: relative;
+  text-shadow: 0 1px 0 #000;  
+  border-color:#f5f5f5;
+}
+
+th:after {
+  background: linear-gradient(rgba(255,255,255,0), rgba(255,255,255,.08));
+  content: '';
+  display: block;
+  height: 25%;
+  left: 0;
+  margin: 1px 0 0 0;
+  position: absolute;
+  top: 25%;
+  width: 100%;
+  border-color:#f5f5f5;
+}
+
+th:first-child {
+  border-left: 1px solid #FFF;  
+  box-shadow: inset 1px 1px 0 #999;
+}
+
+th:last-child {
+  box-shadow: inset -1px 1px 0 #999;
+}
+
+td {
+  border-right: 1px solid #fff;
+  border-left: 1px solid #e8e8e8;
+  border-top: 1px solid #fff;
+  border-bottom: 1px solid #f5f5f5;
+  padding: 10px 15px;
+  position: relative;
+  transition: all 300ms;
+  font-size:13px;
+}
+
+td:first-child {
+  box-shadow: inset 1px 0 0 #fff;
+} 
+
+td:last-child {
+  border-right: 1px solid #f5f5f5;
+  box-shadow: inset -1px 0 0 #fff;
+} 
+
+tr {
+  background: url(http://prosjektdatabasen.com/images/noise-diagonal.png);  
+}
+
+tr:nth-child(odd) td {
+  background: #f1f1f1 url(http://prosjektdatabasen.com/images/noise-diagonal.png);  
+}
+
+tr:last-of-type td {
+  box-shadow: inset 0 -1px 0 #fff; 
+}
+
+tr:last-of-type td:first-child {
+  box-shadow: inset 1px -1px 0 #fff;
+} 
+
+tr:last-of-type td:last-child {
+  box-shadow: inset -1px -1px 0 #fff;
+} 
+
+.button {
+  width:90px;
+  color:#FFF;
+  height:18px;
+  float:left;
+  background-color:#77a756;
   padding:10px;
-  border-color:#2e7297;
+  border-color:#77a756;
   border-radius: 5px;
   border: 1px solid;
   text-align: center;
-  font-size:12px;
-   line-height:16px;
+font-size:14px;
+  line-height:24px;
+ 
 
 }
 
 .button:hover {
-  width:55px;
+   width:90px;
   color:#FFF;
-  height:15px;
+  height:18px;
   float:left;
-  background-color:#4d97bf;
+  background-color:#8bc265;
   padding:10px;
-  border-color:#4d97bf;
+  border-color:#8bc265;
   border-radius: 5px;
   border: 1px solid;
   text-align: center;
-    font-size:12px;
-  line-height:16px;
-
-}
-
-.button2 {
-  width:80px;
-  color:#FFF;
-  height:15px;
-  float:left;
-  background-color:#2e7297;
-  padding:10px;
-  border-color:#2e7297;
-  border-radius: 5px;
-  border: 1px solid;
-  text-align: center;
-  font-size:12px;
-  line-height:16px;
- 
-
-}
-
-.button2:hover {
-  width:80px;
-  color:#FFF;
-  height:15px;
-  float:left;
-  background-color:#4d97bf;
-  padding:10px;
-  border-color:#4d97bf;
-  border-radius: 5px;
-  border: 1px solid;
-  text-align: center;
-    font-size:12px;
-    line-height:16px;
-
-
-}
-
-.button3 {
-  width:170px;
-  color:#FFF;
-  height:25px;
-  float:left;
-  background-color:#2e7297;
-  padding:10px;
-  border-color:#2e7297;
-  border-radius: 5px;
-  border: 1px solid;
-  text-align: center;
-  font-size:15px;
-  line-height:27px;
- 
-
-}
-
-.button3:hover {
-  width:170px;
-  color:#FFF;
-  height:25px;
-  float:left;
-  background-color:#4d97bf;
-  padding:10px;
-  border-color:#4d97bf;
-  border-radius: 5px;
-  border: 1px solid;
-  text-align: center;
-    font-size:15px;
-    line-height:27px;
-
+font-size:14px;
+    line-height:24px;
+   
 
 }
 
 </style>
 
 
-<div class="wrapper">
 
-    <?PHP include 'includes/header-me.php'; ?>
+
+ <div class="wrapper">
+
+    <?PHP include 'includes/header-inlogged.php'; ?>
 <br /><br />
 
 <div class="content" style="margin-top:-30px; margin-bottom:-1px;">
     
-            <h2 style="color:black; font-size:20px;">Prosjektnavn: {username}</h2><br />
+            <h2 style="color:#2e7297; font-size:20px;">Prosjektfase: BP3</h2><br />
 </div>
 
 <div style="text-align:center; width:100%">
@@ -335,73 +403,96 @@ body {
     </div>
 </div>
 <br />
-    <div id="inside-wrap">
+
+  <div id="inside-wrap">
         <div id="left-wrapper">
-<div class="content">
+         <div class="content">
             <img src="http://prosjektdatabasen.com/images/circle-new.png"/ alt="" >
-            <h2 style="color:#2e7297; margin-top:9px; font-size:16px; margin-bottom:10px;">Hvordan bruke prosjektdatabasen?</h2><br />
-             
-             <div style=" width: 340px;
+            <h2 style="color:#2e7297; margin-top:9px; font-size:16px; margin-bottom:10px;">Last opp dokumenter til BP3</h2><br />
+               <div style="width: 400px;
   padding:15px;
   
     background-color:#e1ecef; 
     border-radius: 5px;
-    font-size:14px;
-    margin-bottom:5px;
-    ">Ovenfor ser du prosjektveviseren sin prosjektmodell. Dette er en helt lik kopi av prosjektveiviseren,
-            så man kan lettere navigere seg rundt i prosjektdatabasen. Du trykker på den fasen du ønsker å laste opp et dokument til.
-<br /><br />
-         
-       
-            <text style="font-size:18px;"><b>1.</b></text>  Trykk på fasen du vil jobbe med ovenfor.<br /><br />
-            <text style="font-size:18px;"><b>2.</b></text>  Last opp dokumenter.<br /><br />
-            <text style="font-size:18px;"><b>3.</b></text>  Fortsett til neste fase.</div>
-          
-            <a class="button3" href="bp1" style="margin-top:9px;">› Start prosjektdatabasen </a>  <br /><br /><br /><br /><br /><br />
-           
-
-         
-
-
-     
-
-     
-
-
-
-
+    font-size:14px;">Til høyre vil du se en oversikt over de filene du laster opp. Du kan laste ned filene som lagres. Om du ønsker å fjerne en
+            fil, så må du kontakte en administrator. Du kan laste opp så mange dokumenter du vil, men størrelsen kan ikke overgå 50MB.<br /><br />
+            <text style="font-size:18px;"><b>1.</b></text> Trykk på «Velg fil»<br /><br />
+            <text style="font-size:18px;"><b>2.</b></text> Velg filen du ønsker å laste opp<br /><br />
+            <text style="font-size:18px;"><b>3.</b></text> Trykk på «Last opp»</h2></div>
+            <br />
+             <div id="body">
+ <form action="upload5" method="post" enctype="multipart/form-data">
+ <input type="file" name="file" style="font-size:12px;"/><br /><br />
+ <button type="submit" name="btn-upload">Last opp</button>
+  <a class="button" href="/gjennomforing" style="float:right; margin-right:70px;">› Neste fase</a>
+ </form>
 </div>
-        </div>
+                
+
+
+
+                        </div>​
+
+
+
             
+            </div> 
 
          <div id="right-wrapper">
-
           <div class="content">
             <img src="http://prosjektdatabasen.com/images/circle-new.png"/ alt="" >
-            <h2 style="color:#2e7297; margin-top:9px; font-size:16px; margin-bottom:10px;">Endre prosjektet?</h2><br />
-            Ønsker du å endre beskrivelse eller andre ting på prosjektet? Da kan du trykke på knappen under. Du kan også gå til
-            prosjektinnstillinger i menyen.
+            <h2 style="color:#2e7297; margin-top:9px; font-size:16px; margin-bottom:10px;">Dine dokumenter i BP3</h2><br />
+        <table>
+    <tr>
+    <th>Filnavn</th>
+    <th>Filtype</th>
+    <th>Filstørrelse (KB)</th>
+    <th>Last ned</th>
+
+   
+    </tr>
+
+     <?php
+    $my_id = $_SESSION['user']['id'];
+       $file_loc = $_FILES['file']['tmp_name'];
+     if(isset($_POST['delete'])){
+       $id = $_POST['delete_rec_id'];  
+       $query = sprintf("DELETE FROM tbl_uploads WHERE  file = '$s' AND user_id = '%d'", $file_loc, $my_id);
+       $result = mysql_query($query);
+    }
+ 
+    ?>
+
+<?php
+     $my_id = $_SESSION['user']['id'];
+ $sql="SELECT * FROM tbl_uploads WHERE fase = 5 AND user_id = '$my_id'";
+ $result_set=mysql_query($sql);
+ while($row=mysql_fetch_array($result_set))
+ {
+  ?>
+
+        <tr>
+        <td><?php echo $row['file'] ?></td>
+        <td><?php echo $row['type'] ?></td>
+        <td><?php echo $row['size'] ?></td>
+        <td>
+          <center><a href="uploads/<?php echo $row['file'] ?>" target="_blank" download="uploads/<?php echo $row['file'] ?>" style="text-align:center;"> 
+            <img src="/images/download.png"  style=""></a></center>
 
 
-<br /><br />
-        <a class="button2" href="account">Endre prosjekt</a>     
-
-          </div>
-
-          <div class="content">
-            <img src="http://prosjektdatabasen.com/images/circle-new.png"/ alt="" >
-            <h2 style="color:#2e7297; margin-top:9px; font-size:16px; margin-bottom:10px;">Har du flere prosjekter?</h2><br />
-            Om du har flere prosjekter, så er det bare å logge ut av dette prosjektet. Så registrerer du bare et nytt prosjekt og laster
-            opp dokumentene der. Man kan registrere så mange prosjekter man ønsker.
+        </td>
+        
+  </tr>
 
 
-<br /><br />
 
-<a class="button" href="logout">Logg ut</a>
-             
 
-          </div>
-          
+        </tr>
+        <?php
+ }
+ ?>
+</table>
+</div>
         </div> 
     </div> 
 

@@ -38,82 +38,65 @@ body {
 	width: 500px;
 }
 
-#logo {
-	background-image: url("images/logo2.png");
-	height:60px;
-	width:350px;
-	float:left;
-	margin-top:15px;
-
-}
-
-#search-button {
-	background-image: url("images/search-2.png");
-	height:34px;
+.search-button {
+	background-image: url("http://prosjektdatabasen.com/images/search-2.png");
+	height:36px;
 	width:70px;
 	float:right;
-	margin-right:120px;
+	margin-right:84px;
+    background-repeat: no-repeat;
+    border: 0px;
+    background-color:white;
+    margin-top:1px;
 }
 
-#search-button:hover {
-	background-image: url("images/search-hover3.png");
-	height:34px;
+.search-button:hover {
+	background-image: url("http://prosjektdatabasen.com/images/search-hover3.png");
+	height:36px;
 	width:70px;
 	float:right;
-	margin-right:120px;
+	margin-right:84px;
+     background-repeat: no-repeat;
+     border: 0px;
 }
+
+
+.search-button:active {
+    background-image: url("http://prosjektdatabasen.com/images/search-hover3.png");
+    height:36px;
+    width:70px;
+    float:right;
+    margin-right:84px;
+     background-repeat: no-repeat;
+     border: 0px;
+}
+
+
+
 
 #projectregister {
-	background-image: url("images/register-project.png");
-	height:44px;
-	width:173px;
+	background-image: url("http://prosjektdatabasen.com/images/new_reg.png");
+	height:36px;
+	width:134px;
 	float:left;
 	
 }
 
 #projectregister:hover {
-	background-image: url("images/register-project-hover.png");
-	height:44px;
-	width:173px;
+	background-image: url("images/new_reg_hover.png");
+	height:36px;
+	width:134px;
 	float:left;
 	
 }
 
-#menu {
-	float:right;
 
-}
-
-ul#nav li { /*Setter at liste elementet ikke skal ha noen stil på seg. Setter også at det skal være 15 pixler mellom hver lenke i meny*/
-	list-style-type: none;
-	display: inline-block;
-	margin-left: 15px;
-	margin-top:51px;
-}
-
-a:link {
-    text-decoration: none;
-}
-
-a:visited {
-    text-decoration: none;
-}
-
-a {	
-	font-size:12px;
-	color:#393a3a;
-	font-weight: bold;
-}
-
-a:hover {
-	color:#868889;
-	font-weight: bold;
-}
 
 .content {
     overflow: hidden;
     margin-top:20px;
-    margin-bottom:9px;
+    margin-bottom:8px;
+    font-size:13px;
 }
 
 .content img {
@@ -165,140 +148,127 @@ a:hover {
 
 	}
 
+    .text {
+color:#a4a4a4; width:320px; padding:10px; border: 1px solid;border-radius: 4px;
+font-size:11px;
 
+}
+
+
+
+.reg {
+    width:80px;
+    color:#FFF;
+    height:37px;
+    background-color:#534f4f;
+    padding:10px;
+    border-color:#575454;
+    border-radius: 5px;
+    border: 1px solid;
+    text-align: center;
+ 
+
+}
+
+.reg:hover{
+    width:80px;
+    color:#FFF;
+    height:37px;
+    background-color:#676565;
+    padding:10px;
+    border-color:#676565;
+    border-radius: 5px;
+    border: 1px solid;
+    text-align: center;
+  
+
+}
 </style>
+<iframe name="external_content" src="about:blank" style="width:0px; height: 0px; display:none" onload="document.getElementById('mydiv').innerHTML=frames['external_content'].document.documentElement.innerHTML"></iframe>
 
-<?php
-$listQ = mysql_query("SELECT title, id FROM cms_news ORDER BY id DESC LIMIT 5");
-                $output = "";
-                while($list = mysql_fetch_assoc($listQ)) {
-                    if($list['id'] == $_GET['id'])
-                    $output .= '
-                       <strong>'.$list['title'].'</strong> &raquo;<br />
-                   ';
-                    else
-                    $output .= '
-                       <a href="http://prosjektdatabasen.com/index.php?url=news&id='.$list['id'].'">'.$list['title'].'</a> &raquo;<br />
-                   ';
-                }
-                $template->setParams('audiList', $output);
-           
-                unset($result);
-                unset($news1);
-                unset($news); ?>
 
 <div class="wrapper">
-	<a id="logo" href="http://prosjektdatabasen.com"></a>
 
-<div id="menu">
-	<ul id="nav"> <!--  meny  -->
-                <li><a href="#"> Hjem</a></li>
-                <li><a href="#"> Registrer et prosjekt</a></li>
-                <li><a href="#"> Kontakt oss</a></li>
-		<li><a href="#" data-reveal-id="#"> Logg inn</a></li>
-	</ul>          
-</div>
-
-		<br /><br /><br /><br /><br /><br /><br />
-	<hr />
-<br />
-
+	<?PHP include 'includes/header.php'; ?>
 
 	<div id="inside-wrap">
     	<div id="left-wrapper">
-    		<h2 style="color:#2e7297; font-size:20px;">Prosjektdatabasen</h2>
-    		<p style="color:#424242;">Søk etter prosjekter i prosjektveiviseren</p>
-    		<div id="search-button"></div>
-    		<input type="text" name="lastname" placeholder="Skriv inn søket ditt..." 
-    		style="color:#bebdbd; width:280px; padding:10px; border: 1px solid;border-radius: 4px;"> 
-			<br /><br />
+    		<h2 style="color:black; font-size:20px;">Prosjektdatabasen</h2>
+    		<p style="color:#424242; font-size:13px;">Søk etter prosjekter i prosjektveiviseren</p>
+    		 <form action="index.php" method="GET">
+                 <input type="hidden" name="url" value="search" /> 
+        <input type="text" name="query" class="text" placeholder="Søk etter prosjekter.." style="height:12px;"/>
+        <input type="submit" value="" class="search-button" />
+    </form>
+
+
+            
 
 			<div class="content">
     		<img src="images/circle-new.png"/ alt="" >
-    		<h2 style="color:#2e7297; margin-top:9px; font-size:16px;">Siste 12 prosjekter</h2>
+    		<h2 style="color:#2e7297; margin-top:9px; font-size:16px; margin-bottom:18px;">Siste 12 prosjekter</h2>
     		
 			</div>​
+<?php
+$userid = mysql_real_escape_string($_GET['id']);
+$userdata = mysql_query("SELECT id, username FROM users WHERE id = ". $userid);
+ 
+// <?php $data = mysql_query("SELECT title, id, published, shortstory, longstory, image FROM cms_news ORDER BY id DESC LIMIT 5");
+               
+        while($user = mysql_fetch_array($userdata, MYSQL_ASSOC))
+        {
+            $template->setParams('userName' . $a, $user['username']);
+            $template->setParams('newsID' . $a, $user['id']);
+           
+            $a++;
+        }
 
-
-
-
-<div class="wrap">
+$listUser = mysql_query("SELECT id, username FROM users ORDER BY id DESC LIMIT 12");
+                $output = "";
+                while($listProject = mysql_fetch_assoc($listUser)) {
+                    if($listProject['id'] == $_GET['id'])
+                    $output .= '
+                       <strong>'.$listProject['username'].'</strong> &raquo;<br />
+                   ';
+                    else
+                    $output .= '<div class="wrap">
 	<img src="images/projects.png" />
-	<h3 class="desc">Image 1</h3>
+	<h3 class="desc"><a style="font-size:13px; color:#fff; line-height: 140%;" href="http://prosjektdatabasen.com/prosjekt/'.$listProject['username'].'">'.$listProject['username'].'</a></h3>
 
 </div>
-<div class="wrap">
-	<img src="images/projects.png" />
-	<h3 class="desc">Image 2</h3>
+                      
 
-</div>
-<div class="wrap">
-	<img src="images/projects.png" />
-	<h3 class="desc">Image 3</h3>
+                   ';
+                }
+                $template->setParams('projectList', $output);
+           		
+                unset($result);
+                unset($news1);
+                unset($user); ?>
 
-</div>
-<div class="wrap">
-	<img src="images/projects.png" />
-	<h3 class="desc">Image 1</h3>
 
-</div>
-<div class="wrap">
-	<img src="images/projects.png" />
-	<h3 class="desc">Image 2</h3>
 
-</div>
-<div class="wrap">
-	<img src="images/projects.png" />
-	<h3 class="desc">Image 3</h3>
 
-</div>
-<div class="wrap">
-	<img src="images/projects.png" />
-	<h3 class="desc">Image 1</h3>
 
-</div>
-<div class="wrap">
-	<img src="images/projects.png" />
-	<h3 class="desc">Image 2</h3>
+{projectList}
 
-</div>
-<div class="wrap">
-	<img src="images/projects.png" />
-	<h3 class="desc">Image 3</h3>
-
-</div>
-<div class="wrap">
-	<img src="images/projects.png" />
-	<h3 class="desc">Image 1</h3>
-
-</div>
-<div class="wrap">
-	<img src="images/projects.png" />
-	<h3 class="desc">Image 2</h3>
-
-</div>
-<div class="wrap">
-	<img src="images/projects.png" />
-	<h3 class="desc">Image 3</h3>
-
-</div>
 <div class="content" style="margin-top:255px;">
     		<img src="images/circle-new.png"/ alt="" >
-    		<h2 style="color:#2e7297; margin-top:9px; font-size:16px;">Registrer et prosjekt</h2>
-    		Lorem Ipsum er rett og slett dummytekst fra og for trykkeindustrien. Lorem Ipsum har vært bransjens standard
-    		 for dummytekst helt siden 1500-tallet, da en ukjent boktrykker stokket en mengde bokstaver for å lage et, trykk på knappen under
-for å registrere et prosjekt.
-<br /><br /><br />
-		<a id="projectregister" href="http://prosjektdatabasen.com"></a>
+    		<h2 style="color:#2e7297; margin-top:9px; font-size:16px; margin-bottom:18px;">Registrer et prosjekt</h2>
+    		Du kan enkelt registrere et prosjekt i prosjektdatabasen. Trykk på knappen nedenfor, så vil du fylle inn et skjema som
+         beskriver ditt prosjekt. Når du har opprettet prosjektet ditt, så vil du kunne laste opp dokumenter til hver fase i
+         prosjektveiviseren. Du kan opprette så mange prosjekter du ønsker.
+
+		
 
 			</div>​
 
-    	 	</div> 
-
+          <a id="projectregister" href="register"></a>
+</div>
    		 <div id="right-wrapper">
    		 	<div class="content">
     		<img src="images/circle-new.png"/ alt="" >
-    		<h2 style="color:#2e7297; margin-top:9px; font-size:16px;">Hva er prosjektdatabasen?</h2>
+    		<h2 style="color:#2e7297; margin-top:9px; font-size:16px; margin-bottom:18px;">Hva er prosjektdatabasen?</h2>
     		Lorem Ipsum er rett og slett dummytekst fra og for trykkeindustrien. Lorem Ipsum har vært bransjens 
     		standard for dummytekst helt siden 1500-tallet, da en ukjent boktrykker stokket en mengde bokstaver for å lage 
     		et prøveeksemplar av en bok. Lorem Ipsum har tålt tidens tann usedvanlig godt, og har i tillegg til å bestå gjennom
@@ -307,9 +277,50 @@ for å registrere et prosjekt.
     		 PageMaker som tok i bruk nettopp Lorem Ipsum for dummytekst.
 			</div>​
 
-			<div class="content">
+
+<?php
+$stripped = mysql_real_escape_string($_GET['id']);
+$data = mysql_query("SELECT title, id, published, dato, longstory, image FROM cms_news WHERE id = ". $stripped);
+ 
+// <?php $data = mysql_query("SELECT title, id, published, shortstory, longstory, image FROM cms_news ORDER BY id DESC LIMIT 5");
+               
+        while($news = mysql_fetch_array($data, MYSQL_ASSOC))
+        {
+            $template->setParams('newsTitle' . $a, $news['title']);
+            $template->setParams('newsID' . $a, $news['id']);
+            $template->setParams('newsDate' . $a, date("d-m-y", $news['published']));
+            $template->setParams('newsContent', $news['longstory']);
+            $template->setParams('dato' . $a, $news['dato']);
+            $template->setParams('newsIMG' . $a, $news['image']);
+            $a++;
+        }
+
+$listQ = mysql_query("SELECT title, id, dato FROM cms_news ORDER BY id DESC LIMIT 4");
+                $output = "";
+                while($list = mysql_fetch_assoc($listQ)) {
+                    if($list['id'] == $_GET['id'])
+                    $output .= '
+                       <strong>'.$list['title'].'</strong> &raquo;<br />
+                   ';
+                    else
+                    $output .= '
+                       <a style="font-size:13px; line-height: 140%;" href="http://prosjektdatabasen.com/index.php?url=news&id='.$list['id'].'"><strong style="color:#46423b;">'.$list['title'].'</strong></a>
+                       <br />
+
+                       <a style="font-size:13px; line-height: 140%; color:#000000;" href="http://prosjektdatabasen.com/index.php?url=news&id='.$list['id'].'">'.$list['dato'].'</a><br />
+                       <a style="font-size:12px; line-height: 140%; color:#2e7297;" href="http://prosjektdatabasen.com/index.php?url=news&id='.$list['id'].'">Les mer ›</a><br /><br />
+
+                   ';
+                }
+                $template->setParams('audiList', $output);
+           		
+                unset($result);
+                unset($news1);
+                unset($news); ?>
+
+			<div class="content" style="margin-bottom:-10px;">
     		<img src="images/circle-new.png"/ alt="" >
-    		<h2 style="color:#2e7297; margin-top:9px; font-size:16px;">Nyheter</h2>
+    		<h2 style="color:#2e7297; margin-top:9px; font-size:16px; margin-bottom:18px;">Siste nyheter</h2>
     		{audiList}
 
     		 
@@ -317,12 +328,12 @@ for å registrere et prosjekt.
 
 			<div class="content">
     		<img src="images/circle-new.png"/ alt="" >
-    		<h2 style="color:#2e7297; margin-top:9px; font-size:16px;">Viktige lenker</h2>
-    		<a href="#" style="font-size:12px; line-height: 160%;">› Registrer et prosjekt</a><br />
-			<a href="#" style="font-size:12px; line-height: 160%;">› Logg inn</a><br />
-			<a href="#" style="font-size:12px; line-height: 160%;">› Prosjektveiviseren.no</a><br />
-			<a href="#" style="font-size:12px; line-height: 160%;">› Kontakt oss</a><br />
-			<a href="#" style="font-size:12px; line-height: 160%;">› Om Difi</a><br />
+    		<h2 style="color:#2e7297; margin-top:9px; font-size:16px; margin-bottom:18px;">Viktige lenker</h2>
+    		<a href="register" style="font-size:13px; line-height: 140%;">› Registrer et prosjekt</a><br />
+			<a href="#" style="font-size:13px; line-height: 140%;">› Logg inn</a><br />
+			<a href="http://prosjektveiviseren.no" style="font-size:13px; line-height: 140%;">› Prosjektveiviseren.no</a><br />
+			<a href="#" style="font-size:13px; line-height: 140%;">› Kontakt oss</a><br />
+			<a href="#" style="font-size:13px; line-height: 140%;">› Om Difi</a><br />
 			</div>​
     	</div> 
 	</div> 

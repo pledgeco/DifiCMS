@@ -269,96 +269,114 @@ body {
 
 }
 
+input[type=submit] {
+  width:130px;
+  color:#FFF;
+  height:40px;
+  float:left;
+  background-color:#2e7297;
+  padding:10px;
+  border-color:#4d97bf;
+  border-radius: 5px;
+  border: 1px solid;
+  text-align: center;
+  margin-bottom:80px;
+
+}
+
+input[type=submit]:hover {
+  width:130px;
+  color:#FFF;
+  height:40px;
+  float:left;
+  background-color:#4d97bf;
+  padding:10px;
+  border-color:#4d97bf;
+  border-radius: 5px;
+  border: 1px solid;
+  text-align: center;
+  margin-bottom:80px;
+
+}
+
+.text {
+color:#a4a4a4; width:280px; padding:10px; border: 1px solid;border-radius: 4px;
+font-size:11px;
+
+}
+
+p {
+  font-size:13px;
+
+}
+
+
 </style>
 
 
 <div class="wrapper">
 
     <?PHP include 'includes/header-me.php'; ?>
-<br /><br />
 
-<div class="content" style="margin-top:-30px; margin-bottom:-1px;">
-    
-            <h2 style="color:black; font-size:20px;">Prosjektnavn: {username}</h2><br />
-</div>
 
-<div style="text-align:center; width:100%">
-    <div id="pv_modell">
-      <div class="pv_menu_1">
-
-        <a href="/bp1" class="bp_1"><img src="images/bp_1.png" alt="Beslutningspunkt 1" class="tooltip" title="Beslutningspunkt 1" /></a>
-
-        <div class="pv_menu_text_first">
-          <h2 class="blue"><a href="/konsept" class="fase-header" style="margin-left:15px;">Konsept</a></h2>
-          <a class="small_text_blue" style="margin-left:16px;" href="/konsept">Idé, Behov, Mål</a>        </div>
-
-      </div>
-      <div class="pv_menu_2">
-
-        <a href="/bp2" class="bp_2"><img src="images/bp_2.png" alt="Beslutningspunkt 2" class="tooltip" title="Beslutningspunkt 2" /></a>
-
-        <div class="pv_menu_text">
-          <h2 class="green"><a href="/planlegging" class="fase-header" style="margin-left:5px;">Planlegge</a></h2>
-          <a class="small_text_green" style="margin-left:7px;" href="/planlegging">Styringsunderlag</a>        </div>
-
-      </div>
-      <div class="pv_menu_3">
-
-        <a href="/bp3" class="bp_3"><img src="images/bp_3.png" alt="Beslutningspunkt 3" class="tooltip" title="Beslutningspunkt 3" /></a>
-
-        <div class="pv_menu_text">
-          <h2 class="green"><a href="/gjennomforing" class="fase-header">Gjennomføre</a></h2>
-          <a class="small_text_green" href="gjennomforing">Gjennomføringsfaser</a>        </div>
-
-      </div>
-      <div class="pv_menu_4">
-
-        <a href="/bp4" class="bp_4"><img src="images/bp_4.png" alt="Beslutningspunkt 4" class="tooltip" title="Beslutningspunkt 4" /></a>
-
-        <div class="pv_menu_text">
-          <h2 class="green"><a href="/avslutning" class="fase-header">Avslutte</a></h2>
-          <a class="small_text_green" href="avslutning">Overlevering, Evaluering</a>        </div>
-
-      </div>
-      <div class="pv_menu_5">
-
-        <a href="/bp5" class="bp_5"><img src="images/bp_5.png" alt="Beslutningspunkt 5" class="tooltip" title="Beslutningspunkt 5" /></a>
-
-        <div class="pv_menu_text">
-          <h2 class="blue"><a href="/realisering" class="fase-header">Realisere</a></h2>
-          <a class="small_text_blue" href="realingsering">Gevinster</a>        </div>
-
-        <a href="/bp6" class="bp_6"><img src="images/bp_6.png" alt="Beslutningspunkt 6" class="tooltip" title="Beslutningspunkt 6" />
-        </a>
-
-      </div>
-    </div>
-</div>
-<br />
-    <div id="inside-wrap">
+ <div id="inside-wrap">
         <div id="left-wrapper">
 <div class="content">
             <img src="http://prosjektdatabasen.com/images/circle-new.png"/ alt="" >
-            <h2 style="color:#2e7297; margin-top:9px; font-size:16px; margin-bottom:10px;">Hvordan bruke prosjektdatabasen?</h2><br />
+            <h2 style="color:#2e7297; font-size:16px;">Prosjektinnstillinger</h2><br />
              
-             <div style=" width: 340px;
-  padding:15px;
-  
-    background-color:#e1ecef; 
-    border-radius: 5px;
-    font-size:14px;
-    margin-bottom:5px;
-    ">Ovenfor ser du prosjektveviseren sin prosjektmodell. Dette er en helt lik kopi av prosjektveiviseren,
-            så man kan lettere navigere seg rundt i prosjektdatabasen. Du trykker på den fasen du ønsker å laste opp et dokument til.
-<br /><br />
-         
-       
-            <text style="font-size:18px;"><b>1.</b></text>  Trykk på fasen du vil jobbe med ovenfor.<br /><br />
-            <text style="font-size:18px;"><b>2.</b></text>  Last opp dokumenter.<br /><br />
-            <text style="font-size:18px;"><b>3.</b></text>  Fortsett til neste fase.</div>
+<form method="post" id="profileForm">
+                    
+
+    
           
-            <a class="button3" href="bp1" style="margin-top:9px;">› Start prosjektdatabasen </a>  <br /><br /><br /><br /><br /><br />
-           
+          
+          
+                                            <h2 style="margin-top:-5px; margin-bottom:-4px; font-size:17px;">Prosjektbeskrivelse</h2>
+                                            <p>Beskrivelse av prosjektet ditt. </p>
+                                           <input type="text" class="text" name="acc_motto" size="32" maxlength="32" value="{motto}" id="avatarmotto"></label>
+                                            <h2 style="margin-top:20px; margin-bottom:-4px; font-size:17px;">E-post</h2>
+                                            <p>Bruk en e-post som er aktiv.</p>
+                                       <input type="text" class="text" name="acc_email" size="32" value="{email}" id="avatarmotto" disabled="disabled"></p>
+                                                <h2 style="margin-top:20px; margin-bottom:-4px; font-size:17px;">Ditt passord</h2>
+                                            <p>Passordet du bruker for &aring; logge inn i prosjektdatabasen.</p>
+                                            <input type="password" class="text" name="acc_old_password" value="" id="avatarmotto" placeholder="Ditt passord"></p>
+                                                <h2 style="margin-top:20px; margin-bottom:-4px; font-size:17px;">Nytt passord</h2>
+                                            <p>Passordet m&aring; v&aelig;re 8 bokstaver langt ellers vil det ikke bli endret!</p>
+
+                                         <input type="password" class="text" name="acc_new_password" value="" id="avatarmotto" placeholder="Nytt passord"></p>
+                                                         <br /><div class="settings-buttons">
+
+                                                <input type="submit" value="Lagre endringer!" name="account" class="submit" style="float:left; margin-top:-5px;">
+                                          
+             </div>
+                                        </form>
+        
+          <?php
+          $_SESSION['USER'] = $_SESSION['user']['id'];
+                if($_POST['save-changes'])
+                {
+                    $friends = mysql_real_escape_string($_POST['friends']);
+                    $online  = mysql_real_escape_string($_POST['online']);
+                    $room    = mysql_real_escape_string($_POST['room']);
+                    
+                    $query = mysql_query("UPDATE users SET `block_newfriends` = '".$friends."', `hide_online` = '".$online."', `hide_inroom` = '".$room."' WHERE `id` = '".$_SESSION['USER']."';");
+                    if($query)
+                        echo '<div style="background: green; padding: 5px; color: #fff; -webkit-border-radius: 5px; -moz-border-radius: 5px; border-radius: 5px; margin-bottom: 10px;">Endringene ble lagret!</div>';
+                    else
+                        echo '<div style="background: red; padding: 5px; color: #fff; -webkit-border-radius: 5px; -moz-border-radius: 5px; border-radius: 5px; margin-bottom: 10px;">Noe gikk galt da vi prøvde å lagre endringene.</div>';
+                }
+    class Core {
+      public function User($Q, $value) {
+        return mysql_result(mysql_query("SELECT ".$Q." FROM users WHERE id = '".$_SESSION['USER']."';"), 0);
+      }
+    }
+    $core = new Core;
+            ?>
+         
+          
+  </form> 
+
 
          
 
@@ -379,26 +397,18 @@ body {
           <div class="content">
             <img src="http://prosjektdatabasen.com/images/circle-new.png"/ alt="" >
             <h2 style="color:#2e7297; margin-top:9px; font-size:16px; margin-bottom:10px;">Endre prosjektet?</h2><br />
-            Ønsker du å endre beskrivelse eller andre ting på prosjektet? Da kan du trykke på knappen under. Du kan også gå til
-            prosjektinnstillinger i menyen.
-
-
-<br /><br />
-        <a class="button2" href="account">Endre prosjekt</a>     
-
-          </div>
-
-          <div class="content">
-            <img src="http://prosjektdatabasen.com/images/circle-new.png"/ alt="" >
-            <h2 style="color:#2e7297; margin-top:9px; font-size:16px; margin-bottom:10px;">Har du flere prosjekter?</h2><br />
-            Om du har flere prosjekter, så er det bare å logge ut av dette prosjektet. Så registrerer du bare et nytt prosjekt og laster
-            opp dokumentene der. Man kan registrere så mange prosjekter man ønsker.
-
-
-<br /><br />
-
-<a class="button" href="logout">Logg ut</a>
-             
+            
+            <div style=" width: 340px;
+  padding:15px;
+  
+    background-color:#e1ecef; 
+    border-radius: 5px;
+    font-size:14px;
+    margin-bottom:5px;
+    ">
+            Til venstre, så ser du en oversikt over prosjektet ditt. Du kan redigere alle disse og trykke på «Lagre endringer».
+            Om det er informasjon som du ikke får endret, så må du kontakte en administrator. Du trenger ikke endre alle innstillingene for å lagre endringene.</div>
+</div>  
 
           </div>
           
