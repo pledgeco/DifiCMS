@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 
 <head> 
-<meta http-equiv="content-type" content="text/html; charset=iso-8859-1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <link rel="shortcut icon" href="http://www.difi.no/profiles/difino/themes/difi3_difino/favicon.ico" type="image/vnd.microsoft.icon" />
 <link rel="stylesheet" href="{url}/css/style.css" type="text/css">
 
@@ -344,7 +344,7 @@ body {
              <div style=" width: 340px;
   padding:15px;
   
-    background-color:#e1ecef; 
+    background-color:#e2efd8; 
     border-radius: 5px;
     font-size:14px;
     margin-bottom:5px;
@@ -376,6 +376,47 @@ body {
 
          <div id="right-wrapper">
 
+            <div class="content">
+              <img src="http://prosjektdatabasen.com/images/circle-new.png"/ alt="" >
+                 <h2 style="color:#2e7297; margin-top:9px; font-size:16px; margin-bottom:10px;">Legg til tag</h2><br />
+
+      <div style=" width: 390px; padding:15px; background-color:#e1ecef; border-radius: 5px; font-size:14px; margin-bottom:5px; ">
+        <form method="post">
+          <input type="submit" class="submit" name="newtag" value="Legg til tag" style="float: right; margin-right:180px; ">  
+            <input type="text" name="newtag" maxlength="20" style="float: left" style="border-radius: 5px;" placeholder="Skriv inn en tag..."/>  </form>     <br /><br />  
+      
+ <div style="float:left;">
+   <?php     $my_id = $_SESSION['user']['id'];     $fetch_tags = mysql_query("SELECT tag,id FROM user_tags WHERE user_id = '".$my_id."' LIMIT 8") or die(mysql_error());  
+               $tags_num = mysql_num_rows($fetch_tags);      
+                if (isset($_POST['remtag']))     {     $do = $_GET['do'];     if($do != "") {   
+                  mysql_query("DELETE FROM user_tags WHERE id = '".$do."'");     Redirect("me");     }     }     ?>  
+
+                   <?php $my_id = $_SESSION['user']['id']; $fetch_tags = mysql_query("SELECT tag,id FROM user_tags WHERE user_id = '".$my_id."' LIMIT 8") or die(mysql_error()); 
+
+$do = $_GET['id'];  if (isset($do)) {     mysql_query("DELETE FROM user_tags WHERE id = '".$do."'");     header("Location: me"); }       if (isset($_POST['newtag']))     {     $user_id = $_SESSION['user']['id'];   
+  $tag = htmlspecialchars(addslashes($_POST[newtag]));    
+   if (strlen($user_id) < 1 || strlen($tag) < 1)     {     header("Location: me");     }     else  
+      {         mysql_query("INSERT INTO user_tags (user_id    ,tag) VALUES ('" . $user_id    . "','#" . $tag . "')");     header("Location: me");     }     }     ?>   
+ 
+     <?php if($tags_num > 8){ echo "Max 8 tags per prosjekt."; } elseif($tags_num == 0){ echo "Du har ingen tags."; } elseif($tags_num < 8){ echo ""; } ?>   
+ <?php if($tags_num > 0){ echo "";  while($row = mysql_fetch_assoc($fetch_tags)){   
+ echo '<b>'.htmlspecialchars($row["tag"]).'</b>                         <a href="{url}/index.php?url=me&id='.$row["id"].'">
+ <input type="image" src="{url}/images/delete1.png" style="width:4%;" href="{url}/index.php?url=me&id='.$row["id"].'"/>
+ </a>&nbsp;                 ';     }             echo ""; } ?>  <?php if($tags_num < 8){ ?>      
+   </form>
+
+
+
+    <?php } ?>  
+
+        </div>
+<br /><br />
+      </div>
+
+  </div>
+
+
+          
           <div class="content">
             <img src="http://prosjektdatabasen.com/images/circle-new.png"/ alt="" >
             <h2 style="color:#2e7297; margin-top:9px; font-size:16px; margin-bottom:10px;">Endre prosjektet?</h2><br />

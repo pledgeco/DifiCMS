@@ -421,14 +421,12 @@ a:link{
             <img src="http://prosjektdatabasen.com/images/circle-new.png"/ alt="" >
             <h2 style="color:#2e7297; margin-top:9px; font-size:16px; margin-bottom:-2px;">Informasjon om <?php echo htmlspecialchars($udata['username']); ?></h2><br />
              
-           <br /><div style="width: 400px;
-  padding:15px;
-  
-    background-color:#e2efd8; 
-    border-radius: 5px;
-    font-size:14px;
-"><b>Prosjektbeskrivelse:</b><br />
-<?php echo htmlspecialchars($udata['motto']); ?><br /><br />
+           <br /><div style="width: 400px; padding:15px; background-color:#e2efd8; border-radius: 5px;font-size:14px; ">
+
+<b>Prosjektbeskrivelse:</b><br />
+
+<?php 
+echo htmlspecialchars(wordwrap($udata['motto'], 58,"\n", TRUE)); ?><br /><br />
 <b>Registrert:</b><br />
 <?php
 $timestamp=$udata['account_created'];
@@ -437,23 +435,15 @@ echo gmdate("j. F Y", $timestamp);
 
 
 
-           </div></div>
- 
-
-
-
-
-
-
-                        </div>​
-
+           </div>
+</div>
 
             
             </div> 
 
          <div id="right-wrapper">
             <div id="mydiv">
-              <div class="content" style="margin-top:7px;">
+              <div class="content" style="margin-top:20px;">
             <img src="http://prosjektdatabasen.com/images/circle-new.png"/ alt="" >
             <h2 style="color:#2e7297; margin-top:9px; font-size:16px; margin-bottom:-2px;">Hvordan se dokumentene i dette prosjektet?</h2><br />
              

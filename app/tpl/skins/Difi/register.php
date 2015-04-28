@@ -181,7 +181,7 @@ body {
 
 #right-wrapper {
 	float:right; 
-	width:430px; 
+	width:460px; 
 
 
 }
@@ -195,6 +195,7 @@ body {
     overflow: hidden;
     margin-top:20px;
     margin-bottom:8px;
+    font-size:13px;
 }
 
 .content img {
@@ -220,6 +221,7 @@ color:#a4a4a4; width:280px; padding:10px; border: 1px solid;border-radius: 4px;
 font-size:11px;
 
 }
+
 
 input[type=submit] {
 	width:130px;
@@ -251,7 +253,86 @@ input[type=submit]:hover {
 
 }
 
+p {
+	font-size:13px;
+
+}
+
+.charcounter {
+  position: relative;
+  width: 280px;
+  height: 100px;
+}
+ 
+/* Make both the counter div and the textarea inside the 
+   div bigger and show up on top of each other by placing
+   them on top left corner with absolute positioning */
+.charcounter * {
+  width: 280px;
+  height: 100px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: transparent;
+}
+ 
+/* Modify the counter div's font to show up in the middle
+   and with bigger letters */
+.charcounter div {
+  color: silver;
+  font-family: Arial;
+  font-size: 18px;
+  font-weight: bold;
+  text-align: right;
+  line-height: 200px;
+  vertical-align: right;
+  opacity: 0.5;
+}
+ 
+/* Finally, we want the counter to change color when it's negative */
+.charcounter div.negative {
+  color: red;
+}
 </style>
+<script type="text/javascript">
+  //We want this to run as soon as the page has loaded
+window.onload = function() {
+  //Character limit
+  var limit = 200; 
+ 
+  //the div to contain the background and the textarea
+  var div = document.createElement('div');
+  div.className = 'charcounter';
+ 
+  //Append the div into the document before the textarea, so that when we
+  //remove the textarea, it can be inserted inside the div and it'll look like it never moved.
+  var txt = document.getElementById('text');
+  txt.parentNode.insertBefore(div, txt);
+ 
+  //this will contain the background numbers
+  var counter = document.createElement('div');
+  div.appendChild(counter);
+  counter.innerHTML = limit;
+ 
+  //Add both keypress and keydown handlers to make sure the event always fires
+  txt.onkeypress = txt.onkeydown = function() {
+    //Calculate how many chars the user has remaining
+    var len = limit - txt.value.length;
+    if(len < 0) {
+      counter.className = 'negative';
+    }
+    else {
+      counter.className = '';
+    }
+ 
+    counter.innerHTML = len;
+  };
+ 
+  txt.parentNode.removeChild(txt);
+  div.appendChild(txt);
+}
+
+  </script>
 
 	<div class="wrapper">
    
@@ -274,7 +355,15 @@ input[type=submit]:hover {
 						<div class="input-area">
 						<div id="error_email" class="errors error-top"></div>
 						<input id="id_email" type="text" class="text" autocomplete="off" name="reg_username" maxlength="200" placeholder="Navn på prosjekt" />
-						</div>
+						</div><br />
+					<h2 style="margin-top:-5px; margin-bottom:-4px;">Prosjektbeskrivelse</h2>
+					<p>Kan ikke inneholde mer enn 200 ord.</p>
+						<div class="input-area">
+						<div id="error_motto" class="errors error-top"></div>
+						
+						<textarea rows="10" id="text" class="text" autocomplete="off" name="reg_motto" maxlength="200" placeholder="Prosjektbeskrivelsen" style="resize: none; width:280px;"/></textarea>
+						</div>	<br />
+
 					<h2 style="margin-bottom:-4px;">E-postadresse</h2>
 					<p>Viktig at du bruker en ekte E-post.</p>
 						<div class="input-area">
@@ -320,7 +409,7 @@ input[type=submit]:hover {
             <h2 style="color:#2e7297; margin-top:9px; font-size:16px; margin-bottom:18px;">Har du allerede registrert et prosjekt?</h2>
             Du har kanskje allerede opprettet et prosjekt? Du trenger bare å trykke på logg inn knappen nedenfor. Du bruker ditt prosjektnavn og passord
             for å logge inn. <br /><br />
-            <a id="reg-login" href="#"></a>
+            <a id="reg-login" href="login"></a>
             <br /><br />
            
                         </div>​

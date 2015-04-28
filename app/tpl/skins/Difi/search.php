@@ -160,8 +160,8 @@ font-size:11px;
 
 width:390px;
 color:black;
-height:60px;
-background-color:#efefef;
+height:73px;
+background-color:#f3f3f3;
     line-height:20px;
     border-radius: 5px;
     margin-bottom:9px;
@@ -175,8 +175,8 @@ background-color:#efefef;
 
 width:390px;
 color:black;
-height:60px;
-background-color:#f7f7f7;
+height:73px;
+background-color:#eceded;
     line-height:20px;
     border-radius: 5px;
     margin-bottom:9px;
@@ -198,7 +198,7 @@ background-color:#f7f7f7;
         <div id="left-wrapper">
 
 
-<h2 style="color:#2e7297; font-size:20px;">Prosjektdatabasen</h2>
+<h2 style="color:#black; font-size:20px;">Prosjektdatabasen</h2>
             <p style="color:#424242; font-size:13px;">Søk etter prosjekter i prosjektveiviseren</p>
              <form action="index.php" method="GET">
                  <input type="hidden" name="url" value="search" /> 
@@ -206,35 +206,30 @@ background-color:#f7f7f7;
         <input type="submit" value="" class="search-button"/>
     </form>
 <?php
+
+    $varr = preg_replace("/%u([0-9a-f]{3,4})/i","&#x\\1;",urldecode($url)); 
+    $varr = html_entity_decode($url,null,'UTF-8');
+
     $query = $_GET['query']; 
-    // gets value sent over search form
-     
+    
     $min_length = 2;
-    // you can set minimum length of the query if you want
-     
-    if(strlen($query) >= $min_length){ // if query length is more or equal minimum length then
+   
+    if(strlen($query) >= $min_length){ 
          
         $query = htmlspecialchars($query); 
-        // changes characters used in html to their equivalents, for example: < to &gt;
-         
+    
         $query = mysql_real_escape_string($query);
-        // makes sure nobody uses SQL injection
+   
          
-        $raw_results = mysql_query("SELECT *, account_created FROM users
-            WHERE (`username` LIKE '%".$query."%') OR (`motto` LIKE '%".$query."%')ORDER BY account_created DESC") or die(mysql_error());
+        $raw_results = mysql_query("SELECT *, GROUP_CONCAT(user_tags.tag) as tags FROM users LEFT JOIN user_tags ON users.id = user_tags.user_id
+            WHERE (`username` LIKE '%".$query."%') OR (`motto` LIKE '%".$query."%')OR (`tag` LIKE '%".$query."%')GROUP BY users.id ORDER BY account_created DESC") or die(mysql_error());
          $num_rows = mysql_num_rows($raw_results);
-        // * means that it selects all fields, you can also write: `id`, `title`, `text`
-        // articles is the name of our table
-         
-        // '%$query%' is what we're looking for, % means anything, for example if $query is Hello
-        // it will match "hello", "Hello man", "gogohello", if you want exact match use `title`='$query'
-        // or if you want to match just full word so "gogohello" is out use '% $query %' ...OR ... '$query %' ... OR ... '% $query'
 
 ?>
 
 
-<h3>Omtrent <?php $result = mysql_query("SELECT COUNT(*), SUBSTR(`motto`,1,100) FROM users
-            WHERE (`username` LIKE '%".$query."%') OR (`motto` LIKE '%".$query."%')") or die(mysql_error());
+<h3 style="color:#2e7297;">Omtrent <?php $result = mysql_query("SELECT COUNT(*), GROUP_CONCAT(user_tags.tag) as tags FROM users LEFT JOIN user_tags ON users.id = user_tags.user_id
+            WHERE (`username` LIKE '%".$query."%') OR (`motto` LIKE '%".$query."%') OR (`tag` LIKE '%".$query."%')GROUP BY user_tags.tag ") or die(mysql_error());
         $row = mysql_fetch_array($result);
          $total = $row[0];
 
@@ -250,9 +245,7 @@ background-color:#f7f7f7;
 <body>
 
 <?php
-  
-      
-       
+   
       
 
         if(mysql_num_rows($raw_results) > 0){
@@ -260,27 +253,30 @@ background-color:#f7f7f7;
             while($results = mysql_fetch_array($raw_results)){
              $timestamp=$results['account_created'];
                 echo '
-                <a href="http://prosjektdatabasen.com/prosjekt/'.$results['username'].'"><div class="searchbg">
-                <text style="float:right; font-size:12px; color:#2e7297;">' . gmdate("d.m.y", $timestamp) . '
+                <a href="http://prosjektdatabasen.com/index.php?url=prosjekt&username='.htmlspecialchars($results['username']).'"><div class="searchbg">
+                <text style="float:right; font-size:12px; color:#2e7297;">' . htmlspecialchars(gmdate("d.m.y", $timestamp)) . '
                 </text> 
-                <text style="font-size:17px; color:#494747; font-weight:bold; line-height:140%;">'.$results['username'].'</text><br />
+                <text style="font-size:17px; color:#2b2929; font-weight:bold; line-height:140%;">'.htmlspecialchars($results['username']).'</text><br />
                 
-                 <text style="color:#5e5d5d; line-height:130%;">' . substr($results['motto'], 0,120) . '...</text></div></a>
+                 <text style="color:#353839; line-height:130%; font-size:14px;">' . htmlspecialchars(wordwrap(substr($results['motto'], 0,110), 58 ,"\n", TRUE)) . '...</text>
+                 <br /><text style="color:#4c6b76; font-size:12px;line-height:150%;">Tag: '.$results['tag'].' </text></div>
+                 </a>
 
                  
                  ';
-      
+          
             }
              
         }
         else{ // if there is no matching rows do following
-            echo '<text style="font-size:13px;">Fant ingen prosjekter med søket: <strong>'. $_GET['query'] .'</strong></text>';
+            echo '<text style="font-size:13px;">Fant ingen prosjekter med søket: <strong>'. htmlspecialchars($_GET['query']) .'</strong></text>';
         }
          
     }
     else{ // if query length is less than minimum
-        echo '<br /><text style="font-size:13px; color:red;">Søket må inneholde minst ' .  $min_length . ' bokstaver.</text>';
+        echo '<br /><text style="font-size:13px; color:red;">Søket må inneholde minst ' .  htmlspecialchars($min_length) . ' bokstaver.</text>';
     }
+    mysql_free_result($result);
 ?>
 
 
@@ -329,11 +325,11 @@ $listQ = mysql_query("SELECT title, id, dato FROM cms_news ORDER BY id DESC LIMI
                    ';
                     else
                     $output .= '
-                       <a style="font-size:13px; line-height: 140%;" href="http://prosjektdatabasen.com/index.php?url=news&id='.$list['id'].'"><strong style="color:#46423b;">'.$list['title'].'</strong></a>
+                       <a style="font-size:13px; line-height: 140%;" href="http://prosjektdatabasen.com/index.php?url=news&id='.htmlspecialchars($list['id']).'"><strong style="color:#46423b;">'.htmlspecialchars($list['title']).'</strong></a>
                        <br />
 
-                       <a style="font-size:13px; line-height: 140%; color:#000000;" href="http://prosjektdatabasen.com/index.php?url=news&id='.$list['id'].'">'.$list['dato'].'</a><br />
-                       <a style="font-size:12px; line-height: 140%; color:#2e7297;" href="http://prosjektdatabasen.com/index.php?url=news&id='.$list['id'].'">Les mer ›</a><br /><br />
+                       <a style="font-size:13px; line-height: 140%; color:#000000;" href="http://prosjektdatabasen.com/index.php?url=news&id='.htmlspecialchars($list['id']).'">'.$list['dato'].'</a><br />
+                       <a style="font-size:12px; line-height: 140%; color:#2e7297;" href="http://prosjektdatabasen.com/index.php?url=news&id='.htmlspecialchars($list['id']).'">Les mer ›</a><br /><br />
 
                    ';
                 }
